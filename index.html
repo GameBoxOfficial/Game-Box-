@@ -47,7 +47,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--mute);fo
 <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0b1026" stroke="#262e5c" stroke-width="1.5"/><path d="M50 17L58.2 42.2L84.7 42.2L63.3 57.8L71.5 83L50 67.4L28.5 83L36.7 57.8L15.3 42.2L41.8 42.2Z" fill="#e9c46a" stroke="#e9c46a" stroke-width="3" stroke-linejoin="round"/></svg>
 <h1>Game Box</h1><p data-i="tag"></p>
 <div class="dl"><a id="bw" class="btn" href="#"><span data-i="dlw"></span><small>Windows</small></a><a id="ba" class="btn" href="#"><span data-i="dla"></span><small>Android (APK)</small></a></div>
-<div class="note" data-i="note"></div><div id="rel"></div>
+<div class="note" data-i="note"></div>
 </div>
 
 <section id="discord"><h2 data-i="dcT"></h2><p class="lead" data-i="dcP"></p><a class="btn dc" href="https://discord.gg/2aGSPJznC6" target="_blank" rel="noopener"><span data-i="dcB"></span><small>discord.gg/2aGSPJznC6</small></a></section>
@@ -105,11 +105,7 @@ function render(){
   x.t[i].forEach(s=>{const e=el('span','',s);e.style.color=x.c;e.style.borderColor=x.c+'88';tg.append(e)});n.append(tg);c.append(n);g.append(c)});
  [['#ws',t.win],['#as',t.and]].forEach(([s,a])=>{const o=$(s);o.textContent='';a.forEach(x=>o.append(el('li','',x)))});
  const q=$('#fq');q.textContent='';t.faq.forEach(x=>{const d=el('details'),s=el('summary','',x[0]);d.append(s,el('p','',x[1]));q.append(d)});
- const r=$('#rel');r.textContent='';
- if(REL){const b=el('b','',t.latest+': '+REL.tag_name);r.append(b,' — '+new Date(REL.published_at).toLocaleDateString(L=='fa'?'fa-IR':'en-US'));
-  if(REL.body){r.append(document.createElement('br'),REL.body.replace(/[#*`]/g,'').trim().slice(0,400))}}
 }
 $('#lg').onclick=()=>{L=L=='fa'?'en':'fa';try{localStorage.setItem('gbl',L)}catch(e){}render()};
 render();
-if(REPO!=='USERNAME/REPO')fetch('https://api.github.com/repos/'+REPO+'/releases/latest').then(r=>r.ok?r.json():null).then(j=>{if(j&&j.tag_name){REL=j;render()}}).catch(()=>{});
 </script></body></html>
